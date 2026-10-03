@@ -20,3 +20,7 @@ app.listen(PORT, async () => {
         console.error('Database connection error:', err.message);
     }
 });
+
+// Add these to server.js
+const cardsRoutes = require('./src/features/cards/cards.routes');
+app.use('/api/cards', cardsRoutes);
