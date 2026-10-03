@@ -23,4 +23,8 @@ app.listen(PORT, async () => {
 
 // Add these to server.js
 const cardsRoutes = require('./src/features/cards/cards.routes');
-app.use('/api/cards', cardsRoutes);
+app.use('/cards', cardsRoutes);
+
+// Add these to server.js
+const quizRoutes = require('./src/features/quiz/quiz.routes');
+app.use('/quiz', quizRoutes);
