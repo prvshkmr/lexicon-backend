@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const db = require('./src/config/db');
 require('dotenv').config();
 
@@ -6,6 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.send('Lexicon Backend is running!');
@@ -21,10 +23,8 @@ app.listen(PORT, async () => {
     }
 });
 
-// Add these to server.js
 const cardsRoutes = require('./src/features/cards/cards.routes');
-app.use('/cards', cardsRoutes);
-
-// Add these to server.js
 const quizRoutes = require('./src/features/quiz/quiz.routes');
-app.use('/quiz', quizRoutes);
+
+app.use('/api/cards', cardsRoutes);
+app.use('/api/quiz', quizRoutes);
